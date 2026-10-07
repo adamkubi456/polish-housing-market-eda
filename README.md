@@ -143,6 +143,9 @@ The analysis is based on real estate listings scraped from major Polish property
    git clone [https://github.com/adamkubi456/polish-housing-market-eda.git](https://github.com/adamkubi456/polish-housing-market-eda.git)
    cd polish-housing-market-eda
 
+---
+
+
 ## 👤 Author
 
 * **Adam Kubiak**
