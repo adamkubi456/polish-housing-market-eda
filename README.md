@@ -7,9 +7,9 @@
 ![Seaborn](https://img.shields.io/badge/Seaborn-Visualization-4c72b0)
 ![Plotly](https://img.shields.io/badge/Plotly-Geospatial%20Mapping-3F4F75?logo=plotly)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adamkubi456/polish-housing-market-eda/blob/main/polish_housing_eda.ipynb)
 ---
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adamkubi456/polish-housing-market-eda/blob/main/polish_housing_eda.ipynb)
 ## 📌 Executive Summary
 
 This project delivers an end-to-end data analysis of the Polish residential housing market based on over **21,000 apartment listings** from June 2024. Beyond descriptive statistics, the study formulates and tests **four specific investment hypotheses** using non-parametric statistical methods (**Mann-Whitney U**, **Kruskal-Wallis H**). 
