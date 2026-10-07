@@ -131,3 +131,10 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
    ```bash
    git clone [https://github.com/adamkubi456/polish-housing-market-eda.git](https://github.com/adamkubi456/polish-housing-market-eda.git)
    cd polish-housing-market-eda
+
+## 👤 Author
+
+* **Adam Kubiak**
+* LinkedIn: [Adam Kubiak](https://www.linkedin.com/in/adam-kubiak-22b655431/)
+* GitHub: [@adamkubi456](https://github.com/adamkubi456)
+* Email: adamkubi456@wp.pl
