@@ -88,7 +88,10 @@ The feature correlation matrix (Spearman Rank) details the relationships across 
 
 Interactive spatial mapping in Plotly highlights clear valuation clusters and price decay radiating from the capital center along rapid transit arteries.
 
-* 🗺️ **[Launch Interactive Warsaw Price Map](https://adamkubi456.github.io/polish-housing-market-eda/assets/warsaw_price_map.html)**
+* 🌐 **[Open Interactive Map via HTMLPreview](https://htmlpreview.github.io/?https://github.com/adamkubi456/polish-housing-market-eda/blob/main/assets/warsaw_price_map.html)**
+* 🌐 **[Launch via GitHub Pages](https://adamkubi456.github.io/polish-housing-market-eda/assets/warsaw_price_map.html)** *(if enabled in settings)*
+
+---
 
 ## 📑 Summary of Statistical Inference
 
@@ -126,5 +129,5 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
-   cd <your-repo-name>
+   git clone [https://github.com/adamkubi456/polish-housing-market-eda.git](https://github.com/adamkubi456/polish-housing-market-eda.git)
+   cd polish-housing-market-eda
