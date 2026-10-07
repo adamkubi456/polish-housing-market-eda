@@ -20,10 +20,10 @@ The analysis reveals critical microeconomic patterns, such as the **amenities sa
 ## 🔑 Key Insights & Business Findings
 
 1. **Amenities Saturation Ceiling:** Adding basic conveniences (balcony, elevator, parking) increases unit valuation up to an **Amenities Score of 3 (+19.4% median premium)**. Accumulating further amenities yields diminishing returns, as premium properties hit an affordability ceiling.
-2. **Micro-Apartment Premium (+23.7%):** Compact studios ($\le 35\text{ m}^2$) command a statistically significant unit premium over mass-market flats ($35\text{--}65\text{ m}^2$), driven by lower nominal ticket size and high rental yields.
-3. **Room Density Paradox:** Within the identical area envelope ($45\text{--}65\text{ m}^2$), **2-room flats are valued 5.7% higher per $\text{m}^2$ than 3-room configurations**. Market preference prioritizes ergonomic living space over partitioned room count.
-4. **Student Hub Protection for Distressed Assets:** Proximity to academic institutions acts as a valuation cushion: unrenovated/distressed properties located $<1.5\text{ km}$ from universities retain a **+35.7% unit price premium** compared to distant counterparts.
-5. **Simpson's Paradox in Spatial Distance:** While pooled national data indicates a counter-intuitive positive correlation between distance to center and price per $\text{m}^2$ ($r = +0.10$), this is an artifact of high-priced capital city suburbs. Within individual cities, distance maintains a strong negative relationship.
+2. **Micro-Apartment Premium (+23.7%):** Compact studios (≤ 35 m²) command a statistically significant unit premium over mass-market flats (35–65 m²), driven by lower nominal ticket size and high rental yields.
+3. **Room Density Paradox:** Within the identical area envelope (45–65 m²), **2-room flats are valued 5.7% higher per m² than 3-room configurations**. Market preference prioritizes ergonomic living space over partitioned room count.
+4. **Student Hub Protection for Distressed Assets:** Proximity to academic institutions acts as a valuation cushion: unrenovated/distressed properties located < 1.5 km from universities retain a **+35.7% unit price premium** compared to distant counterparts.
+5. **Simpson's Paradox in Spatial Distance:** While pooled national data indicates a counter-intuitive positive correlation between distance to center and price per m² (r = +0.10), this is an artifact of high-priced capital city suburbs. Within individual cities, distance maintains a strong negative relationship.
 
 ---
 
@@ -32,31 +32,31 @@ The analysis reveals critical microeconomic patterns, such as the **amenities sa
 ### 🧪 Hypothesis 1: Amenities Bundle Premium & Saturation Effect
 > **Hypothesis:** Each additional convenience (parking, elevator, balcony, security, storage) increases valuation in a linear fashion.  
 > **Result: Confirmed (Non-linear Saturation).**  
-> *Test:* Kruskal-Wallis $H = 386.58$, $p = 2.32 \times 10^{-81}$ ($\alpha = 0.01$).
+> *Test:* Kruskal-Wallis H = 386.58, p = 2.32e-81 (α = 0.01).
 
-Valuation increases rapidly as properties move from 0 amenities (baseline) to 3 amenities. However, properties with 4 and 5 amenities plateau around 16,000 PLN/$\text{m}^2$, reflecting affordability resistance among buyers.
+Valuation increases rapidly as properties move from 0 amenities (baseline) to 3 amenities. However, properties with 4 and 5 amenities plateau around 16,000 PLN/m², reflecting affordability resistance among buyers.
 
 ![Hypothesis 1 - Amenities Bundle](assets/h1_amenities_premium.png)
 
 ---
 
 ### 🧪 Hypothesis 2: Micro-Apartment Valuation Premium
-> **Hypothesis:** Small apartments ($\le 35\text{ m}^2$) trade at significantly higher price per $\text{m}^2$ than medium-sized units ($35\text{--}65\text{ m}^2$).  
+> **Hypothesis:** Small apartments (≤ 35 m²) trade at significantly higher price per m² than medium-sized units (35–65 m²).  
 > **Result: Confirmed.**  
-> *Test:* Mann-Whitney $U = 1.86 \times 10^7$, $p = 6.38 \times 10^{-112}$ ($\alpha = 0.01$).
+> *Test:* Mann-Whitney U = 1.86e+07, p = 6.38e-112 (α = 0.01).
 
-Micro-apartments trade at a median of **15,695 PLN/$\text{m}^2$ (+23.7% premium)** compared to medium units (12,689 PLN/$\text{m}^2$). The LOWESS regression curve illustrates steep economies of scale: per-square-meter prices decline sharply between $20\text{ m}^2$ and $60\text{ m}^2$ before flattening for larger family residences.
+Micro-apartments trade at a median of **15,695 PLN/m² (+23.7% premium)** compared to medium units (12,689 PLN/m²). The LOWESS regression curve illustrates steep economies of scale: per-square-meter prices decline sharply between 20 m² and 60 m² before flattening for larger family residences.
 
 ![Hypothesis 2 - Micro-Apartment Premium](assets/h2_micro_apartments.png)
 
 ---
 
-### 🧪 Hypothesis 3: Room Density vs. Unit Valuation ($45\text{--}65\text{ m}^2$)
+### 🧪 Hypothesis 3: Room Density vs. Unit Valuation (45–65 m²)
 > **Hypothesis:** Dividing a mid-sized apartment into 3 rooms creates higher unit value than a standard 2-room layout.  
 > **Result: Rejected.**  
-> *Test:* Mann-Whitney $U = 9.24 \times 10^6$, $p < 10^{-15}$ (tested $3\text{ rooms} < 2\text{ rooms}$).
+> *Test:* Mann-Whitney U = 9.24e+06, p < 1e-15 (tested 3 rooms < 2 rooms).
 
-Controlling for square meters, **2-room layouts achieve a median price of 12,689 PLN/$\text{m}^2$**, whereas 3-room configurations achieve **11,962 PLN/$\text{m}^2$ (-5.7%)**. Buyers penalize overly fragmented layouts with narrow bedrooms and unfunctional kitchenettes in favor of spacious, open-plan living rooms.
+Controlling for square meters, **2-room layouts achieve a median price of 12,689 PLN/m²**, whereas 3-room configurations achieve **11,962 PLN/m² (-5.7%)**. Buyers penalize overly fragmented layouts with narrow bedrooms and unfunctional kitchenettes in favor of spacious, open-plan living rooms.
 
 ![Hypothesis 3 - Room Density](assets/h3_room_density.png)
 
@@ -65,9 +65,9 @@ Controlling for square meters, **2-room layouts achieve a median price of 12,689
 ### 🧪 Hypothesis 4: Student Hub Resilience for Distressed Units
 > **Hypothesis:** Close proximity to universities protects the valuation of apartments requiring renovation (`condition = low`).  
 > **Result: Confirmed.**  
-> *Test:* Mann-Whitney $U = 1.28 \times 10^5$, $p = 3.28 \times 10^{-6}$ ($\alpha = 0.01$).
+> *Test:* Mann-Whitney U = 1.28e+05, p = 3.28e-06 (α = 0.01).
 
-Properties in low condition located $<1.5\text{ km}$ from university campuses command **13,296 PLN/$\text{m}^2$** vs. **9,800 PLN/$\text{m}^2$** for those $>3.5\text{ km}$ away (**+35.7% price resilience**). The structural demand of the student rental market shields unrenovated assets from typical price penalties.
+Properties in low condition located < 1.5 km from university campuses command **13,296 PLN/m²** vs. **9,800 PLN/m²** for those > 3.5 km away (**+35.7% price resilience**). The structural demand of the student rental market shields unrenovated assets from typical price penalties.
 
 ![Hypothesis 4 - University Proximity](assets/h4_student_condition.png)
 
@@ -79,8 +79,8 @@ The feature correlation matrix (Spearman Rank) details the relationships across 
 
 ![Correlation Matrix](assets/correlation_matrix.png)
 
-* **Multicollinearity:** Total area (`squareMeters`) and room count (`rooms`) exhibit strong collinearity ($r = 0.82$), which requires dimensionality reduction or regularization (Ridge/Lasso) before predictive modeling.
-* **Simpson's Paradox:** The pooled correlation between `centreDistance` and `price_per_m2` appears positive ($r = +0.10$). This is an aggregation distortion: suburban districts of tier-1 cities (e.g., Warsaw, Kraków) have higher absolute price levels than central districts of secondary cities (e.g., Radom, Częstochowa). Within any single city, distance to center is strictly negatively correlated with unit price.
+* **Multicollinearity:** Total area (`squareMeters`) and room count (`rooms`) exhibit strong collinearity (r = 0.82), which requires dimensionality reduction or regularization (Ridge/Lasso) before predictive modeling.
+* **Simpson's Paradox:** The pooled correlation between `centreDistance` and `price_per_m2` appears positive (r = +0.10). This is an aggregation distortion: suburban districts of tier-1 cities (e.g., Warsaw, Kraków) have higher absolute price levels than central districts of secondary cities (e.g., Radom, Częstochowa). Within any single city, distance to center is strictly negatively correlated with unit price.
 
 ---
 
@@ -94,12 +94,12 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
 
 ## 📑 Summary of Statistical Inference
 
-| # | Hypothesis | Statistical Test | Test Statistic | $p$-value | Significance ($\alpha=0.05$) | Empirical Verdict |
+| # | Hypothesis | Statistical Test | Test Statistic | p-value | Significance (α = 0.05) | Empirical Verdict |
 |---|---|---|---|---|---|---|
-| **H1** | Amenities bundle value effect ($0\text{--}5$) | Kruskal-Wallis H | $386.58$ | $2.32 \times 10^{-81}$ | **Yes** | **Confirmed** (Saturation at score 3) |
-| **H2** | Micro-unit valuation premium ($\le 35\text{ m}^2$) | Mann-Whitney U | $1.86 \times 10^7$ | $6.38 \times 10^{-112}$ | **Yes** | **Confirmed** (+23.7% unit premium) |
-| **H3** | Higher valuation for 3 vs 2 rooms ($45\text{--}65\text{ m}^2$) | Mann-Whitney U | $9.24 \times 10^6$ | $1.00$ (one-sided) | **No** | **Rejected** (2-room units lead by 5.7%) |
-| **H4** | University proximity shields low-condition units | Mann-Whitney U | $1.28 \times 10^5$ | $3.28 \times 10^{-6}$ | **Yes** | **Confirmed** (+35.7% price cushion) |
+| **H1** | Amenities bundle value effect (0–5) | Kruskal-Wallis H | 386.58 | 2.32e-81 | **Yes** | **Confirmed** (Saturation at score 3) |
+| **H2** | Micro-unit valuation premium (≤ 35 m²) | Mann-Whitney U | 1.86e+07 | 6.38e-112 | **Yes** | **Confirmed** (+23.7% unit premium) |
+| **H3** | Higher valuation for 3 vs 2 rooms (45–65 m²) | Mann-Whitney U | 9.24e+06 | 1.00 (one-sided) | **No** | **Rejected** (2-room units lead by 5.7%) |
+| **H4** | University proximity shields low-condition units | Mann-Whitney U | 1.28e+05 | 3.28e-06 | **Yes** | **Confirmed** (+35.7% price cushion) |
 
 ---
 
