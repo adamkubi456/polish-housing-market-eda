@@ -125,6 +125,17 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
 
 ---
 
+## 📂 Data Source & Attribution
+
+The analysis is based on real estate listings scraped from major Polish property portals:
+* **Source:** [Apartment Prices in Poland (Kaggle)](https://www.kaggle.com/datasets/krzysztofjamroz/apartment-prices-in-poland)
+* **Dataset Author:** Krzysztof Jamróz
+* **Scope:** June 2024 snapshot (`apartments_pl_2024_06.csv`)
+* **Volume:** 21,501 validated property records across major Polish metropolitan areas.
+
+---
+
+
 ## 🚀 How to Reproduce
 
 1. **Clone the repository:**
