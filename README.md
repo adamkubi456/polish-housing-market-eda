@@ -1,73 +1,132 @@
-# Analiza Polskiego Rynku Nieruchomości (EDA)
-Eksploracyjna analiza danych (EDA) rynku mieszkaniowego w największych miastach Polski, zrealizowana na bazie danych z platformy Kaggle. 
+# 🏢 Polish Residential Real Estate Market Analysis (June 2024)
+### Exploratory Data Analysis, Statistical Hypothesis Testing & Market Segmentation
 
-Projekt identyfikuje kluczowe determinanty cen lokali mieszkalnych. Repozytorium obejmuje pełen proces inżynierii danych: standaryzację i czyszczenie surowego zbioru, weryfikację anomalii i wartości odstających, inżynierię cech (feature engineering) oraz empiryczną weryfikację 4 hipotez rynkowych.
-
-### Hipotezy biznesowe:
-
-1. **Premia za pakiet udogodnień (Amenities Premium):**  
-   Zwiększenie liczby udogodnień w lokalu (winda, miejsce parkingowe, balkon, ochrona, komórka lokatorska) przekłada się na nieliniowy wzrost ceny za m², przy czym istnieje punkt nasycenia, powyżej którego kolejne udogodnienia nie generują istotnej statystycznie nadwyżki rynkowej.
-
-2. **Premia za mikrometraż (Efekt skali vs kawalerki):**  
-   Cena za metr kwadratowy maleje nieliniowo wraz ze wzrostem powierzchni lokalu – małe mieszkania (do 35 m²) uzyskują najwyższą wycenę jednostkową na rynku ze względu na wysoką płynność i popyt inwestycyjny.
-
-3. **Optymalizacja układu („Upakowanie” pokoi):**  
-   W ramach tego samego przedziału metrażowego (segment 45–65 m²) lokale o większej liczbie pokoi (mniejsza średnia powierzchnia pojedynczego pokoju) osiągają wyższą cenę za m² niż mieszkania o układzie przestronnym, co wynika z premii za potencjał wynajmu na pokoje.
-
-4. **Segment studencki a tolerancja standardu technicznego:**  
-   Bliskość uczelni wyższych (do 1,5 km) neutralizuje dyskonto wynikające ze słabszego stanu technicznego nieruchomości – popyt akademicki utrzymuje wysokie stawki za m² nawet dla mieszkań wymagających remontu.
-
-## 📊 Weryfikacja Hipotez Rynkowych
-
-### 1. Premia za udogodnienia i punkt nasycenia (Amenities Score)
-![Hipoteza 1](assets/h1_amenities_premium.png)
-* **Efekt schodkowy:** Mieszkania z 1–2 udogodnieniami uzyskują umiarkowaną premię (+6,7% do +7,8%), podczas gdy zestaw 3 elementów powoduje skok wyceny do poziomu 15 000 zł/m² (+15,4% względem oferty bazowej).
-* **Punkt nasycenia:** Przejście z 3 do 4 udogodnień podnosi medianę o zaledwie 148 zł/m², co wskazuje na malejące korzyści krańcowe z dodatkowych cech standardowych.
-* **Segment premium:** Maksymalny pakiet (5 udogodnień) stanowi jedynie 0,8% rynku i osiąga wycenę wyższą o 23%, reprezentując wąski segment apartamentów luksusowych.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
+![Pandas](https://img.shields.io/badge/Pandas-2.0%2B-150458?logo=pandas)
+![SciPy](https://img.shields.io/badge/SciPy-Statistical%20Inference-8CAAE6?logo=scipy)
+![Seaborn](https://img.shields.io/badge/Seaborn-Visualization-4c72b0)
+![Plotly](https://img.shields.io/badge/Plotly-Geospatial%20Mapping-3F4F75?logo=plotly)
 
 ---
 
-### 2. Premia za mikrometraż i krzywa U-kształtna
-![Hipoteza 2](assets/h2_micro_apartments.png)
-* **Przewaga kawalerek:** Lokale o powierzchni do 35 m² osiągają medianę 17 313 zł/m² – to aż o **23,7% wyższa stawka jednostkowa** niż w segmencie mieszkań średnich (35–65 m²).
-* **Wyczerpanie efektu skali:** Różnica cen między segmentem średnim (14 000 zł/m²) a rodzinnym (13 810 zł/m²) wynosi zaledwie 1,4%, co dowodzi stabilizacji cen po przekroczeniu progu kawalerki.
-* **Odbicie dla apartamentów (>100 m²):** Wykres trendu rynkowego (LOWESS) ujawnia charakterystykę U-kształtną – ponowny wzrost stawek za metr w największych metrażach wynika z obecności luksusowych apartamentów w centrach metropolii.
+## 📌 Executive Summary
+
+This project delivers an end-to-end data analysis of the Polish residential housing market based on over **21,000 apartment listings** from June 2024. Beyond descriptive statistics, the study formulates and tests **four specific investment hypotheses** using non-parametric statistical methods (**Mann-Whitney U**, **Kruskal-Wallis H**). 
+
+The analysis reveals critical microeconomic patterns, such as the **amenities saturation ceiling**, **micro-apartment valuation premiums**, room density dynamics, and a pronounced **Simpson's Paradox** emerging from inter-city price aggregation.
 
 ---
 
-### 3. Liczba pokoi w segmencie popularnym (45–65 m²)
-![Hipoteza 3](assets/h3_room_density.png)
-* **Obalenie hipotezy o zagęszczeniu:** Lokale 2-pokojowe osiągają najwyższą wycenę jednostkową (14 000 zł/m²), przewyższając układy 3-pokojowe o 5,7% oraz 4-pokojowe o 8,9%.
-* **Preferencja przestrzeni dziennej:** Zjawisko to występuje najsilniej w **nowym budownictwie** (+10,2% na korzyść 2 pokoi), co pokazuje, że nabywcy wyżej cenią przestronne strefy dzienne (salon z aneksem) niż ciasne sypialnie.
-* **Wyjątek kamienic:** W budownictwie przedwojennym trend ulega odwróceniu – układy 3-pokojowe uzyskują wycenę wyższą o 12,8% ze względu na specyfikę adaptacji historycznych przestrzeni pod kancelarie i najem premium.
+## 🔑 Key Insights & Business Findings
+
+1. **Amenities Saturation Ceiling:** Adding basic conveniences (balcony, elevator, parking) increases unit valuation up to an **Amenities Score of 3 (+19.4% median premium)**. Accumulating further amenities yields diminishing returns, as premium properties hit an affordability ceiling.
+2. **Micro-Apartment Premium (+23.7%):** Compact studios ($\le 35\text{ m}^2$) command a statistically significant unit premium over mass-market flats ($35\text{--}65\text{ m}^2$), driven by lower nominal ticket size and high rental yields.
+3. **Room Density Paradox:** Within the identical area envelope ($45\text{--}65\text{ m}^2$), **2-room flats are valued 5.7% higher per $\text{m}^2$ than 3-room configurations**. Market preference prioritizes ergonomic living space over partitioned room count.
+4. **Student Hub Protection for Distressed Assets:** Proximity to academic institutions acts as a valuation cushion: unrenovated/distressed properties located $<1.5\text{ km}$ from universities retain a **+35.7% unit price premium** compared to distant counterparts.
+5. **Simpson's Paradox in Spatial Distance:** While pooled national data indicates a counter-intuitive positive correlation between distance to center and price per $\text{m}^2$ ($r = +0.10$), this is an artifact of high-priced capital city suburbs. Within individual cities, distance maintains a strong negative relationship.
 
 ---
 
-### 4. Segment studencki a stan lokalu (Condition vs Proximity)
-![Hipoteza 4](assets/h4_student_condition.png)
-* **Karygodny stan na peryferiach:** W odległości powyżej 3,5 km od uczelni zły stan techniczny (`low`) oznacza drastyczny spadek wyceny do 9 204 zł/m² (**dyskonto rzędu 37,5%** względem mieszkań premium).
-* **Poduszka cenowa wokół kampusów:** W promieniu 1,5 km od uczelni wycena lokali do remontu wzrasta do 12 488 zł/m², redukując dyskonto jakościowe niemal o połowę (do 19,3%). Stały popyt ze strony studentów i inwestorów chroni wartość lokali o niskim standardzie.
-* **Reporting Bias:** Wykazano, że 80% braków deklaracji stanu technicznego zachowuje się jak nieruchomości o standardzie przeciętnym (mediana 13,8–14,9 tys. zł/m²).
+## 📊 Hypothesis Deep Dives
+
+### 🧪 Hypothesis 1: Amenities Bundle Premium & Saturation Effect
+> **Hypothesis:** Each additional convenience (parking, elevator, balcony, security, storage) increases valuation in a linear fashion.  
+> **Result: Confirmed (Non-linear Saturation).**  
+> *Test:* Kruskal-Wallis $H = 386.58$, $p = 2.32 \times 10^{-81}$ ($\alpha = 0.01$).
+
+Valuation increases rapidly as properties move from 0 amenities (baseline) to 3 amenities. However, properties with 4 and 5 amenities plateau around 16,000 PLN/$\text{m}^2$, reflecting affordability resistance among buyers.
+
+![Hypothesis 1 - Amenities Bundle](assets/h1_amenities_premium.png)
+
 ---
 
-# Polish Housing Market Analysis (EDA)
+### 🧪 Hypothesis 2: Micro-Apartment Valuation Premium
+> **Hypothesis:** Small apartments ($\le 35\text{ m}^2$) trade at significantly higher price per $\text{m}^2$ than medium-sized units ($35\text{--}65\text{ m}^2$).  
+> **Result: Confirmed.**  
+> *Test:* Mann-Whitney $U = 1.86 \times 10^7$, $p = 6.38 \times 10^{-112}$ ($\alpha = 0.01$).
 
-An exploratory data analysis (EDA) of the residential property market across Poland's major metropolitan areas, based on data sourced from Kaggle.
+Micro-apartments trade at a median of **15,695 PLN/$\text{m}^2$ (+23.7% premium)** compared to medium units (12,689 PLN/$\text{m}^2$). The LOWESS regression curve illustrates steep economies of scale: per-square-meter prices decline sharply between $20\text{ m}^2$ and $60\text{ m}^2$ before flattening for larger family residences.
 
-This project investigates the primary drivers behind housing valuations. The repository details the end-to-end analytical pipeline: data preprocessing and cleaning, domain-aware outlier detection, feature engineering, and empirical hypothesis testing.
+![Hypothesis 2 - Micro-Apartment Premium](assets/h2_micro_apartments.png)
 
-### Business Hypotheses:
+---
 
-1. **Amenities Premium & Saturation:**  
-   A higher composite amenities score (elevator, parking space, balcony, security, storage) drives a non-linear increase in price per square meter, with a detectable point of diminishing returns beyond which additional features yield marginal value.
+### 🧪 Hypothesis 3: Room Density vs. Unit Valuation ($45\text{--}65\text{ m}^2$)
+> **Hypothesis:** Dividing a mid-sized apartment into 3 rooms creates higher unit value than a standard 2-room layout.  
+> **Result: Rejected.**  
+> *Test:* Mann-Whitney $U = 9.24 \times 10^6$, $p < 10^{-15}$ (tested $3\text{ rooms} < 2\text{ rooms}$).
 
-2. **Micro-Apartment Premium (Economy of Scale):**  
-   Price per square meter decreases non-linearly with total area – compact apartments (under 35 m²) command the highest unit prices due to strong rental investor demand and higher transaction liquidity.
+Controlling for square meters, **2-room layouts achieve a median price of 12,689 PLN/$\text{m}^2$**, whereas 3-room configurations achieve **11,962 PLN/$\text{m}^2$ (-5.7%)**. Buyers penalize overly fragmented layouts with narrow bedrooms and unfunctional kitchenettes in favor of spacious, open-plan living rooms.
 
-3. **Room Density & Layout Efficiency:**  
-   Within an identical size tier (45–65 m²), properties configured with more rooms (lower average room area) achieve higher prices per square meter than spacious layouts, capturing a premium driven by room-by-room rental strategies.
+![Hypothesis 3 - Room Density](assets/h3_room_density.png)
 
-4. **Student Market Resilience to Property Condition:**  
-   Close proximity to universities (under 1.5 km) mitigates pricing discounts associated with lower property condition ratings – student-driven demand supports stable per-square-meter prices even for properties requiring renovation.
+---
 
-```
+### 🧪 Hypothesis 4: Student Hub Resilience for Distressed Units
+> **Hypothesis:** Close proximity to universities protects the valuation of apartments requiring renovation (`condition = low`).  
+> **Result: Confirmed.**  
+> *Test:* Mann-Whitney $U = 1.28 \times 10^5$, $p = 3.28 \times 10^{-6}$ ($\alpha = 0.01$).
+
+Properties in low condition located $<1.5\text{ km}$ from university campuses command **13,296 PLN/$\text{m}^2$** vs. **9,800 PLN/$\text{m}^2$** for those $>3.5\text{ km}$ away (**+35.7% price resilience**). The structural demand of the student rental market shields unrenovated assets from typical price penalties.
+
+![Hypothesis 4 - University Proximity](assets/h4_student_condition.png)
+
+---
+
+## 📈 Correlation Analysis & Simpson's Paradox
+
+The feature correlation matrix (Spearman Rank) details the relationships across continuous and ordinal attributes:
+
+![Correlation Matrix](assets/correlation_matrix.png)
+
+* **Multicollinearity:** Total area (`squareMeters`) and room count (`rooms`) exhibit strong collinearity ($r = 0.82$), which requires dimensionality reduction or regularization (Ridge/Lasso) before predictive modeling.
+* **Simpson's Paradox:** The pooled correlation between `centreDistance` and `price_per_m2` appears positive ($r = +0.10$). This is an aggregation distortion: suburban districts of tier-1 cities (e.g., Warsaw, Kraków) have higher absolute price levels than central districts of secondary cities (e.g., Radom, Częstochowa). Within any single city, distance to center is strictly negatively correlated with unit price.
+
+---
+
+## 🗺️ Geospatial Exploration
+
+Interactive spatial mapping in Plotly highlights clear valuation clusters and price decay radiating from the capital center along rapid transit arteries.
+
+* **Interactive Map:** Available in [`assets/warsaw_price_map.html`](assets/warsaw_price_map.html) (open locally in any browser).
+
+---
+
+## 📑 Summary of Statistical Inference
+
+| # | Hypothesis | Statistical Test | Test Statistic | $p$-value | Significance ($\alpha=0.05$) | Empirical Verdict |
+|---|---|---|---|---|---|---|
+| **H1** | Amenities bundle value effect ($0\text{--}5$) | Kruskal-Wallis H | $386.58$ | $2.32 \times 10^{-81}$ | **Yes** | **Confirmed** (Saturation at score 3) |
+| **H2** | Micro-unit valuation premium ($\le 35\text{ m}^2$) | Mann-Whitney U | $1.86 \times 10^7$ | $6.38 \times 10^{-112}$ | **Yes** | **Confirmed** (+23.7% unit premium) |
+| **H3** | Higher valuation for 3 vs 2 rooms ($45\text{--}65\text{ m}^2$) | Mann-Whitney U | $9.24 \times 10^6$ | $1.00$ (one-sided) | **No** | **Rejected** (2-room units lead by 5.7%) |
+| **H4** | University proximity shields low-condition units | Mann-Whitney U | $1.28 \times 10^5$ | $3.28 \times 10^{-6}$ | **Yes** | **Confirmed** (+35.7% price cushion) |
+
+---
+
+## ⚠️ Project Limitations & Domain Assumptions
+
+1. **Asking Prices vs. Transaction Prices:**  
+   The dataset consists exclusively of web-scraped asking (listing) prices. In the Polish real estate market, actual transaction prices historically deviate downward by 5% to 15% due to negotiation margins and mortgage qualification timelines.
+2. **Condition Variable Missingness:**  
+   The `condition` feature exhibits an ~80% missing data rate. In Polish classifieds, realtors actively declare condition when it is a primary marketing advantage (`refurbished / premium`) or when disclosing required overhaul (`low / for renovation`), leaving standard properties unlabeled.
+3. **Cross-Sectional Data:**  
+   Data represents a single point in time (June 2024). Consequently, it does not capture time-series price adjustments, listing duration, or the impact of government housing loan subsidy cycles.
+
+---
+
+## 💻 Tech Stack & Methods
+
+* **Language:** Python 3.10+
+* **Data Manipulation:** `pandas`, `numpy`
+* **Statistical Inference:** `scipy.stats` (Mann-Whitney U, Kruskal-Wallis H)
+* **Visualization:** `matplotlib`, `seaborn`, `statsmodels` (LOWESS trend)
+* **Interactive Mapping:** `plotly.express` (Mapbox with Esri raster layers)
+
+---
+
+## 🚀 How to Reproduce
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
+   cd <your-repo-name>
