@@ -1,20 +1,20 @@
-# 🏢 Polish Residential Real Estate Market Analysis (June 2024)
+# 🏢 Polish Residential Real Estate Market Analysis (August 2023 – June 2024)
 ### Exploratory Data Analysis, Statistical Hypothesis Testing & Market Segmentation
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adamkubi456/polish-housing-market-eda/blob/main/polish_housing_eda.ipynb)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
 ![Pandas](https://img.shields.io/badge/Pandas-2.0%2B-150458?logo=pandas)
 ![SciPy](https://img.shields.io/badge/SciPy-Statistical%20Inference-8CAAE6?logo=scipy)
 ![Seaborn](https://img.shields.io/badge/Seaborn-Visualization-4c72b0)
 ![Plotly](https://img.shields.io/badge/Plotly-Geospatial%20Mapping-3F4F75?logo=plotly)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adamkubi456/polish-housing-market-eda/blob/main/polish_housing_eda.ipynb)
 ---
 
 ## 📌 Executive Summary
 
-This project delivers an end-to-end data analysis of the Polish residential housing market based on over **21,000 apartment listings** from June 2024. Beyond descriptive statistics, the study formulates and tests **four specific investment hypotheses** using non-parametric statistical methods (**Mann-Whitney U**, **Kruskal-Wallis H**). 
+This project delivers an end-to-end data analysis of the Polish residential housing market across the **15 largest metropolitan areas** (including Warsaw, Kraków, Łódź, Wrocław, Poznań, and Gdańsk), based on listings aggregated between **August 2023 and June 2024**. The dataset combines real estate portal offers with spatial proximity indicators sourced from OpenStreetMap (POI).
 
-The analysis reveals critical microeconomic patterns, such as the **amenities saturation ceiling**, **micro-apartment valuation premiums**, room density dynamics, and a pronounced **Simpson's Paradox** emerging from inter-city price aggregation.
+Beyond descriptive statistics, the study formulates and rigorously evaluates **four investment hypotheses** using non-parametric statistical methods (**Mann-Whitney U**, **Kruskal-Wallis H**). The analysis uncovers key microeconomic mechanics: the **amenities saturation ceiling**, **micro-apartment valuation premiums**, room density dynamics, and a pronounced **Simpson's Paradox** emerging from inter-city spatial aggregation.
 
 ---
 
@@ -89,7 +89,7 @@ The feature correlation matrix (Spearman Rank) details the relationships across 
 
 Interactive spatial mapping in Plotly highlights clear valuation clusters and price decay radiating from the capital center along rapid transit arteries.
 
-* 🌐 **[Launch via GitHub Pages](https://adamkubi456.github.io/polish-housing-market-eda/assets/warsaw_price_map.html)** 
+* 🌐 **[Launch via GitHub Pages](https://adamkubi456.github.io/polish-housing-market-eda/assets/warsaw_price_map.html)**
 
 ---
 
@@ -110,8 +110,19 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
    The dataset consists exclusively of web-scraped asking (listing) prices. In the Polish real estate market, actual transaction prices historically deviate downward by 5% to 15% due to negotiation margins and mortgage qualification timelines.
 2. **Condition Variable Missingness:**  
    The `condition` feature exhibits an ~80% missing data rate. In Polish classifieds, realtors actively declare condition when it is a primary marketing advantage (`refurbished / premium`) or when disclosing required overhaul (`low / for renovation`), leaving standard properties unlabeled.
-3. **Cross-Sectional Data:**  
-   Data represents a single point in time (June 2024). Consequently, it does not capture time-series price adjustments, listing duration, or the impact of government housing loan subsidy cycles.
+3. **Temporal Dynamics (August 2023 – June 2024):**  
+   The dataset covers an 11-month observation window spanning major macroeconomic shifts, including the tail-end of the governmental *2% Safe Credit (Bezpieczny Kredyt 2%)* subsidy scheme. Aggregating listings over this period without time indexing introduces unobserved inflation and demand-driven price shifts into absolute valuation comparisons.
+
+---
+
+## 📂 Data Source & Attribution
+
+The analysis is based on real estate listings scraped from major Polish property portals:
+* **Dataset:** [Apartment Prices in Poland (Kaggle)](https://www.kaggle.com/datasets/krzysztofjamroz/apartment-prices-in-poland)
+* **Author:** Krzysztof Jamróz
+* **Temporal Coverage:** Monthly scrapes between **August 2023 and June 2024**
+* **Geographical Scope:** 15 largest cities in Poland (Warszawa, Kraków, Łódź, Wrocław, Poznań, Gdańsk, Szczecin, Bydgoszcz, Lublin, Katowice, Białystok, Częstochowa, Radom, Sosnowiec, Toruń)
+* **Feature Enrichment:** Proximity distances to Points of Interest (POI) derived from OpenStreetMap
 
 ---
 
@@ -125,30 +136,9 @@ Interactive spatial mapping in Plotly highlights clear valuation clusters and pr
 
 ---
 
-## 📂 Data Source & Attribution
-
-The analysis is based on real estate listings scraped from major Polish property portals:
-* **Source:** [Apartment Prices in Poland (Kaggle)](https://www.kaggle.com/datasets/krzysztofjamroz/apartment-prices-in-poland)
-* **Dataset Author:** Krzysztof Jamróz
-* **Scope:** June 2024 snapshot (`apartments_pl_2024_06.csv`)
-* **Volume:** 21,501 validated property records across major Polish metropolitan areas.
-
----
-
-
 ## 🚀 How to Reproduce
 
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/adamkubi456/polish-housing-market-eda.git](https://github.com/adamkubi456/polish-housing-market-eda.git)
    cd polish-housing-market-eda
-
----
-
-
-## 👤 Author
-
-* **Adam Kubiak**
-* LinkedIn: [Adam Kubiak](https://www.linkedin.com/in/adam-kubiak-22b655431/)
-* GitHub: [@adamkubi456](https://github.com/adamkubi456)
-* Email: adamkubi456@wp.pl
