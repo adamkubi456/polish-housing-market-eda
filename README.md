@@ -140,5 +140,27 @@ The analysis is based on real estate listings scraped from major Polish property
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/adamkubi456/polish-housing-market-eda.git](https://github.com/adamkubi456/polish-housing-market-eda.git)
+   git clone https://github.com/adamkubi456/polish-housing-market-eda.git
    cd polish-housing-market-eda
+   ```
+
+2. **Obtain the dataset:**
+   * Download the dataset from [Kaggle](https://www.kaggle.com/datasets/krzysztofjamroz/apartment-prices-in-poland).
+   * Place the data file in your project working directory.
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run analysis:**  
+   Open and execute `polish_housing_eda.ipynb` in Jupyter Notebook or Google Colab.
+
+---
+
+## 👤 Author
+
+* **Adam Kubiak**
+* LinkedIn: [Adam Kubiak](https://www.linkedin.com/in/adam-kubiak-22b655431/)
+* GitHub: [@adamkubi456](https://github.com/adamkubi456)
+* Email: adamkubi456@wp.pl
